@@ -15,14 +15,7 @@ export const appConfig: ApplicationConfig = {
         provideZoneChangeDetection({ eventCoalescing: true }),
         provideRouter(routes),
         provideFirebaseApp(() => initializeApp(
-            // {
-            //     "projectId": "stolper-steine",
-            //     "appId": "1:326106493392:web:a87509599c69be395949d5",
-            //     "storageBucket": "stolper-steine.firebasestorage.app",
-            //     "apiKey": "AIzaSyDC-ZOnblNNdWL1--OGfPCSDkoJvUUi0Lw",
-            //     "authDomain": "stolper-steine.firebaseapp.com",
-            //     "messagingSenderId": "326106493392"
-            // }
+
             environment.firebase
         )),
         provideAuth(() => getAuth()),
@@ -31,8 +24,8 @@ export const appConfig: ApplicationConfig = {
         provideAnimationsAsync(), provideServiceWorker('ngsw-worker.js', {
             enabled: !isDevMode(),
             registrationStrategy: 'registerWhenStable:30000'
-          }), provideServiceWorker('ngsw-worker.js', {
+        }), provideServiceWorker('ngsw-worker.js', {
             enabled: !isDevMode(),
             registrationStrategy: 'registerWhenStable:30000'
-          })]
+        })]
 };

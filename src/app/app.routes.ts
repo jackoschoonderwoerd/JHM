@@ -7,7 +7,7 @@ import { ManageStonesComponent } from './admin/manage-stones/manage-stones.compo
 
 export const routes: Routes = [
     {
-        path: '', component: StartComponent
+        path: '', component: LoginComponent
     },
     {
         path: 'login',
@@ -35,7 +35,12 @@ export const routes: Routes = [
             .then(c => c.SimulatorComponent)
     },
     {
-        path: '**', component: StartComponent
+        path: 'admin-login',
+        loadComponent: () => import('./auth/admin-login/admin-login.component')
+            .then(c => c.AdminLoginComponent)
+    },
+    {
+        path: '**', component: LoginComponent
     }
     // {
     //     path: 'login', component: LoginComponent

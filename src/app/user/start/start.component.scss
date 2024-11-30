@@ -16,19 +16,23 @@ main {
     mat-accordion {
         width: 100%;
         mat-expansion-panel {
-            background-color: var(--bg-2);
-            font-weight: bold;
+            background-color: var(--white);
+            // color: var(--text);
             mat-expansion-panel-header {
-                background-color: var(--bg);
-                border: 1px solid var(--text);
-                mat-panel-title {
-                }
-                mat-panel-description {
-                    color: var(--text);
-                }
-                mat-panel-description:hover {
-                    color: var(--bg);
-                }
+                // background-color: var(--bg);
+
+                // mat-panel-title {
+                //     color: var(--text);
+                // }
+                // mat-panel-title:hover {
+                //     color: var(--bg);
+                // }
+                // mat-panel-description {
+                //     color: var(--text);
+                // }
+                // mat-panel-description:hover {
+                //     color: var(--bg);
+                // }
             }
             mat-expansion-panel-header:hover {
                 color: var(--bg) !important;

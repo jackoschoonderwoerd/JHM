@@ -3,7 +3,9 @@
         <app-sidenav (closeSidenav)="sidenav.close()"></app-sidenav>
     </mat-sidenav>
     <mat-sidenav-content>
+        @if(authService.isLoggedIn){
         <app-header (sidenavToggle)="sidenav.open()"></app-header>
+        }
         <main>
             <router-outlet></router-outlet>
         </main>

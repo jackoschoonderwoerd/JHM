@@ -10,15 +10,18 @@
                 routerLink="login">login</a></li>
         }
         @if(authService.isLoggedIn) {
-
+        <li><a routerLinkActive="link-active"
+                routerLink="admin-login">admin-login</a></li>
         <li><a href="#"
                 (click)="signOut()">sign out</a></li>
+        @if(authService.isAdmin){
         <li><a routerLinkActive="link-active"
                 routerLink="add-stone">add stone</a></li>
         <li><a routerLinkActive="link-active"
                 routerLink="manage-stones">manage stones</a></li>
         <li><a routerLinkActive="link-active"
                 routerLink="simulator">simulator</a></li>
+        }
         }
     </ul>
 </mat-toolbar>

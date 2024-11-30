@@ -7,6 +7,8 @@ import { Auth, onAuthStateChanged, User as FirebaseUser } from '@angular/fire/au
 import { AuthService } from './auth/auth.service';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { SidenavComponent } from './navigation/sidenav/sidenav.component';
+import { MatDialog } from '@angular/material/dialog';
+import { UnderConstructionComponent } from './ui/under-construction/under-construction.component';
 
 @Component({
     selector: 'app-root',
@@ -19,13 +21,16 @@ export class AppComponent implements OnInit {
 
     constructor(
         private auth: Auth,
-        private authService: AuthService
+        public authService: AuthService,
+        private dialog: MatDialog
     ) { }
 
     ngOnInit(): void {
         onAuthStateChanged(this.auth, (user: FirebaseUser | null) => {
             if (user) {
                 this.authService.persistLogin(user);
+            } else {
+                // this.dialog.open(UnderConstructionComponent);
             }
         })
     }

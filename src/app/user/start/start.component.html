@@ -1,5 +1,6 @@
 <main>
-    @if(authService.isLoggedIn) {
+
+    @if(authService.isLoggedIn && authService.isAdmin){
     <div class="input-cue">
         Enter allowed maximum distance between user and stolper stein in meters.
     </div>
@@ -12,6 +13,8 @@
         <!-- <div class="current">(current allowed maximum distance:&nbsp;{{allowedMaximumDistanceInMeters}})</div> -->
     </mat-form-field>
     }
+
+
     @if(fetchingData){
     <img src="/gif/animated_loader_gif_n6b5x0.gif"
         alt="">
@@ -24,7 +27,7 @@
         <mat-expansion-panel>
             <!-- <mat-expansion-panel-header [style]=" stone.distanceFromUserInMeters < allowedMaximumDistanceInMeters ? 'background-color: lightgreen;' : 'background-color:pink'"> -->
             <mat-expansion-panel-header>
-                @if(authService.isLoggedIn){
+                @if(authService.isLoggedIn && authService.isAdmin){
 
                 <mat-panel-title style="flex-grow: 0; width: 3rem;">
                     {{stone.distanceFromUserInMeters}}m

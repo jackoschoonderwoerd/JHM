@@ -1,11 +1,11 @@
 <form [formGroup]="form">
-    <h3>This site is currently under construction, and not accessible to the public.</h3>
     <mat-form-field>
         <mat-label>email</mat-label>
-        <input formControlName="email"
-            type="email"
-            matInput>
+        <input type="email"
+            matInput
+            formControlName="email">
     </mat-form-field>
+
     <mat-form-field>
         <mat-label>password</mat-label>
         <input type="password"
@@ -13,6 +13,5 @@
             formControlName="password">
     </mat-form-field>
     <button mat-raised-button
-        color="primary"
         (click)="onSubmit()">submit</button>
 </form>
