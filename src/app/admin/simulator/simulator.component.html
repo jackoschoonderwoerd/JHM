@@ -1,0 +1,93 @@
+<main>
+    <form [formGroup]="form">
+        <mat-form-field>
+            <mat-label>description</mat-label>
+            <textarea formControlName="description"
+                matInput></textarea>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>latitude</mat-label>
+            <input type="number"
+                matInput
+                formControlName="latitude">
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>longitude</mat-label>
+            <input type="number"
+                matInput
+                formControlName="longitude">
+        </mat-form-field>
+        <div class="buttons">
+
+            <button mat-raised-button
+                [disabled]="form.invalid"
+                (click)="onSubmit()">{{!editmode ? 'add location': 'update location'}}</button>
+            <button mat-raised-button
+                (click)="onCancel()">cancel</button>
+        </div>
+
+    </form>
+
+    <mat-radio-group aria-labelledby="example-radio-group-label"
+        class="simulation-locations"
+        [(ngModel)]="selectedLocation">
+        @for (location of simulationLocations; track location.id) {
+        <div class="radio-content">
+            <mat-radio-button class="simulation-location"
+                (click)="onRadioButton(location)"
+                [value]="location">
+
+            </mat-radio-button>
+            <div class="location-details">
+                <div class="description">{{location.description}}</div>
+                <div class="latitude">lat.:&nbsp;{{location.latitude}}</div>
+                <div class="longitude">lon.:&nbsp;{{location.longitude}}</div>
+                <mat-icon class="edit"
+                    (click)="onEdit(location)">edit</mat-icon>
+                <mat-icon class="delete"
+                    (click)="onDelete(location.id)">delete</mat-icon>
+            </div>
+        </div>
+        }
+    </mat-radio-group>
+
+    <mat-accordion class="stones-by-distance"
+        multi="false">
+        @for(stone of sortedStones; track stone.id) {
+        <mat-expansion-panel>
+            <!-- {{stone.distanceFromUserInMeters < 10}} -->
+            <mat-expansion-panel-header [style]=" stone.distanceFromUserInMeters < 11 ? 'background-color: lightgreen;' : 'background-color:pink'">
+                <!-- <mat-expansion-panel-header [ngClass]="1 < 10 ? 'visible-to-user' : 'not-visible-to-user'"> -->
+                <mat-panel-title style="flex-grow: 0; width: 3rem;">
+                    {{stone.distanceFromUserInMeters}}m
+
+                </mat-panel-title>
+                <mat-panel-description>
+                    <span class="first-name">{{stone.firstName}}</span>&nbsp;
+                    <span class="preposition">{{stone.preposition}}</span>&nbsp;
+                    <span class="last-name">{{stone.lastName}}</span>
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="stone-details">
+                <div class="address"><span class="street">{{stone.street}}</span>&nbsp;<span class="house-number">{{stone.houseNumber}}</span>&nbsp;<span class="city">{{stone.city}}</span></div>
+                <div class="life"><span class="birthyear">{{stone.birthyear}}</span>&nbsp;-&nbsp;<span class="dateOfDeath">{{stone.dateOfDeath.seconds*1000|date}}</span></div>
+                <div class="date-of-stolperstein-laying">stolperstein since&nbsp;{{stone.dateOfStolperSteinLaying.seconds*1000|date}}</div>
+                <button mat-raised-button
+                    class="weblink"><a target="_blank"
+                        [href]="stone.weblink">weblink</a></button>
+            </div>
+
+        </mat-expansion-panel>
+        }
+
+
+    </mat-accordion>
+    <!-- <div class="sorted-stones">
+        @for(stone of sortedStones ; track stone.id) {
+        <div class="sorted-stone">
+            {{stone|json}}
+        </div>
+        }
+    </div> -->
+</main>

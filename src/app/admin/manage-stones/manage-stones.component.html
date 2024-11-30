@@ -1,0 +1,105 @@
+<main>
+    <mat-form-field class="filter">
+        <mat-label>filter</mat-label>
+        <input type="text"
+            (keyup)="doFilter($event.target.value)"
+            matInput>
+    </mat-form-field>
+    <table mat-table
+        matSort
+        [dataSource]="dataSource"
+        class="mat-elevation-z8">
+        <ng-container matColumnDef="edit">
+            <th class="edit"
+                mat-header-cell
+                mat-sort-header
+                *matHeaderCellDef>edit</th>
+            <td mat-cell
+                *matCellDef="let stolperstein">
+                <mat-icon class="icon-display"
+                    (click)="onEdit(stolperstein.id)">edit</mat-icon>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="firstName">
+            <th class="first-name"
+                mat-header-cell
+                mat-sort-header
+                *matHeaderCellDef> first name </th>
+            <td mat-cell
+                *matCellDef="let stolperstein">
+                {{stolperstein.firstName}}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="preposition">
+            <th class="preposition"
+                mat-header-cell
+                *matHeaderCellDef>prep. </th>
+            <td mat-cell
+                *matCellDef="let stolperstein">
+                @if(stolperstein.preposition !== 'null') {
+                {{stolperstein.preposition}}
+                }
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="lastName">
+            <th class="last-name"
+                mat-header-cell
+                mat-sort-header
+                *matHeaderCellDef> last name </th>
+            <td mat-cell
+                *matCellDef="let stolperstein">
+                {{stolperstein.lastName}}
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="street">
+            <th mat-header-cell
+                *matHeaderCellDef
+                mat-sort-header> street </th>
+            <td mat-cell
+                *matCellDef="let stolperstein"> {{stolperstein.street}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="houseNumber">
+            <th mat-header-cell
+                *matHeaderCellDef
+                mat-sort-header> number </th>
+            <td mat-cell
+                *matCellDef="let stolperstein"> {{stolperstein.houseNumber}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="city">
+            <th mat-header-cell
+                *matHeaderCellDef> city </th>
+            <td mat-cell
+                *matCellDef="let stolperstein"> {{stolperstein.city}} </td>
+        </ng-container>
+        <ng-container matColumnDef="weblink">
+            <th mat-header-cell
+                *matHeaderCellDef> weblink </th>
+            <td mat-cell
+                *matCellDef="let stolperstein"> {{stolperstein.weblink}} </td>
+        </ng-container>
+        <ng-container matColumnDef="delete">
+            <th mat-header-cell
+                mat-sort-header
+                *matHeaderCellDef>delete</th>
+            <td mat-cell
+                *matCellDef="let stolperstein">
+                <mat-icon class="icon-display"
+                    (click)="onDelete(
+                        stolperstein)">delete</mat-icon>
+            </td>
+        </ng-container>
+
+
+
+        <tr mat-header-row
+            *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row
+            *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <button mat-raised-button
+        (click)="onAddStone()">add stone</button>
+</main>

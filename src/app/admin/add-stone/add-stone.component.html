@@ -1,0 +1,119 @@
+<main>
+
+    <form [formGroup]="form">
+        <div class="left">
+            <mat-form-field>
+                <mat-label>first name</mat-label>
+                <input type="text"
+                    matInput
+                    formControlName="firstName">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>preposition</mat-label>
+                <input type="text"
+                    matInput
+                    formControlName="preposition">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>last name</mat-label>
+                <input type="text"
+                    matInput
+                    formControlName="lastName">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>street</mat-label>
+                <input type="text"
+                    formControlName="street"
+                    matInput>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>house number</mat-label>
+                <input type="text"
+                    formControlName="houseNumber"
+                    matInput>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>city</mat-label>
+                <input type="text"
+                    formControlName="city"
+                    matInput>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>birthyear</mat-label>
+                <input type="number"
+                    formControlName="birthyear"
+                    matInput>
+            </mat-form-field>
+
+        </div>
+        <div class="right">
+
+            <mat-form-field>
+                <mat-label>date of death</mat-label>
+                <input matInput
+                    formControlName="dateOfDeath"
+                    [matDatepicker]="picker">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix
+                    [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>location</mat-label>
+                <input type="text"
+                    formControlName="location"
+                    matInput>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>date of stolperstein laying</mat-label>
+                <input matInput
+                    formControlName="dateOfStolperSteinLaying"
+                    [matDatepicker]="picker1">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix
+                    [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>weblink</mat-label>
+                <textarea type="text"
+                    rows="3"
+                    formControlName="weblink"
+                    matInput></textarea>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>latitude</mat-label>
+                <input type="number"
+                    formControlName="latitude"
+                    matInput>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>longitude</mat-label>
+                <input type="number"
+                    formControlName="longitude"
+                    matInput>
+            </mat-form-field>
+            <div class="buttons">
+
+                <button class="add-stone"
+                    mat-raised-button
+                    (click)="onSubmit()">{{!editmode?'add stone':'update stone'}}</button>
+                <button class="add-stone"
+                    mat-raised-button
+                    (click)="onCancel()">cancel</button>
+            </div>
+        </div>
+
+
+    </form>
+</main>

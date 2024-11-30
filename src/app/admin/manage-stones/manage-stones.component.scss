@@ -1,0 +1,20 @@
+main {
+    padding: 2rem;
+    .filter {
+        width: 350px;
+    }
+    table {
+        .edit {
+            width: 20px;
+        }
+        .first-name {
+            width: 150px;
+        }
+        .preposition {
+            width: 50px;
+        }
+        .last-name {
+            width: 150px;
+        }
+    }
+}

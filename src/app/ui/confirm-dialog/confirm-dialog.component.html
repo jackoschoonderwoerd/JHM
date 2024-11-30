@@ -1,0 +1,15 @@
+<h4 mat-dialog-title>confirm</h4>
+<mat-dialog-content>
+
+    <p>you are about to permanently delete following data</p>
+    <p>
+        {{data|json}}
+    </p>
+    <p>do you wish to proceed?</p>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-raised-button
+        [mat-dialog-close]="true">yes</button>
+    <button mat-raised-button
+        [mat-dialog-close]="false">no</button>
+</mat-dialog-actions>

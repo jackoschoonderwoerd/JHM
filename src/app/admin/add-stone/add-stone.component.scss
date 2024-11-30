@@ -1,0 +1,30 @@
+main {
+    padding: 3rem;
+    background-color: gray;
+
+    form {
+        padding: 1rem;
+        // border: 1px solid red;
+        width: 1000px;
+        margin: auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        .left {
+            display: flex;
+            flex-direction: column;
+        }
+        .right {
+            display: flex;
+            flex-direction: column;
+            .buttons {
+                padding: 1rem;
+                border: 3px solid white;
+                border-radius: 10px;
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    }
+}

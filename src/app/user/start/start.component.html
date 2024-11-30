@@ -1,0 +1,58 @@
+<main>
+    @if(authService.isLoggedIn) {
+    <div class="input-cue">
+        Enter allowed maximum distance between user and stolper stein in meters.
+    </div>
+    <mat-form-field>
+        <mat-label>enter meters</mat-label>
+        <input matInput
+            [value]="allowedMaximumDistanceInMeters"
+            type="number"
+            (keyup)="distanceSelected($event.target.value)">
+        <!-- <div class="current">(current allowed maximum distance:&nbsp;{{allowedMaximumDistanceInMeters}})</div> -->
+    </mat-form-field>
+    }
+    @if(fetchingData){
+    <img src="/gif/animated_loader_gif_n6b5x0.gif"
+        alt="">
+    <p class="loading">loading...</p>
+    }
+    @if(sortedStonesUnderMaximumMeters.length){
+    <mat-accordion class="stones-by-distance"
+        multi="false">
+        @for(stone of sortedStonesUnderMaximumMeters; track stone.id) {
+        <mat-expansion-panel>
+            <!-- <mat-expansion-panel-header [style]=" stone.distanceFromUserInMeters < allowedMaximumDistanceInMeters ? 'background-color: lightgreen;' : 'background-color:pink'"> -->
+            <mat-expansion-panel-header>
+                @if(authService.isLoggedIn){
+
+                <mat-panel-title style="flex-grow: 0; width: 3rem;">
+                    {{stone.distanceFromUserInMeters}}m
+
+                </mat-panel-title>
+                }
+                <mat-panel-description>
+                    <span class="first-name">{{stone.firstName}}</span>&nbsp;
+                    <span class="preposition">{{stone.preposition}}</span>&nbsp;
+                    <span class="last-name">{{stone.lastName}}</span>
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="stone-details">
+                <div class="life"><span class="birthyear">{{stone.birthyear}}</span>&nbsp;-&nbsp;<span class="dateOfDeath">{{stone.dateOfDeath.seconds*1000|date}}</span></div>
+                <div class="address"><span class="street">{{stone.street}}</span>&nbsp;<span class="house-number">{{stone.houseNumber}}</span>&nbsp;<span class="city">{{stone.city}}</span></div>
+                <div class="date-of-stolperstein-laying">stolperstein since&nbsp;{{stone.dateOfStolperSteinLaying.seconds*1000|date}}</div>
+                <button mat-raised-button
+                    class="weblink"><a target="_blank"
+                        [href]="stone.weblink">weblink</a></button>
+            </div>
+
+        </mat-expansion-panel>
+        }
+    </mat-accordion>
+    } @else {
+    @if(!fetchingData){
+    <div class="not-in-range">
+        Currently no Stolper Steine within range</div>
+    }
+    }
+</main>

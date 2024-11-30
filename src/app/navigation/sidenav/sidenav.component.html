@@ -1,0 +1,28 @@
+<ul>
+    <li mat-list-item
+        (click)="onCloseSidenav()"
+        routerLink="start">start</li>
+    @if(authService.isLoggedIn){
+    <li mat-list-item
+        (click)="onSignOut()">sign out</li>
+    }
+    @if(!authService.isLoggedIn){
+    <li mat-list-item
+        (click)="onCloseSidenav()"
+        routerLink="login">log in</li>
+    }
+    @if(authService.isLoggedIn) {
+    <li mat-list-item
+        (click)="onCloseSidenav()"
+        routerLink="add-stone">addstone</li>
+    <li mat-list-item
+        (click)="onCloseSidenav()"
+        routerLink="manage-stones">manage stones</li>
+    <li mat-list-item
+        (click)="onCloseSidenav()"
+        routerLink="simulator">simulator</li>
+    <li (click)="onCloseSidenav()">
+        <mat-icon>close</mat-icon>
+    </li>
+    }
+</ul>

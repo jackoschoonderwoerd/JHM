@@ -1,0 +1,21 @@
+mat-toolbar {
+    border: 1px solid black;
+    display: flex;
+    gap: 1rem;
+    .menu {
+        @media (700px <= width) {
+            display: none;
+        }
+    }
+    ul {
+        display: flex;
+        gap: 1rem;
+        list-style: none;
+        @media (700px > width) {
+            display: none;
+        }
+    }
+}
+.link-active {
+    color: red;
+}
